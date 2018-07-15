@@ -1,0 +1,101 @@
+<?php
+    $name = $email = $item = "";
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $name = format_data($_POST["fname"]);
+        $email = format_data($_POST["email"]);
+        item = format_data($_POST["item"]);
+        
+    function format_data($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
+?>
+
+<html>
+    <head>
+        <title>EDC Knife Supply</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="stylesheet.css">
+        <link rel="shortcut icon" type="image/x-icon" href="../images/favicon.png">
+    </head>
+    <body>
+        <section class="content_box">
+            <img id="banner" src="../images/banner.png" alt ="Banner"/>
+            <ul class="nav_bar">
+                <li class="left_nav"><a href="index.html">HOME</a></li>
+                <li class="left_nav"><a href="about.html">ABOUT</a></li>
+                <li class="left_nav"><a href="brands.html">BRANDS</a></li>
+                <li class="left_nav"><a href="order.html">ORDER</a></li>
+                <li class="left_nav"><a href="contact.html">CONTACT</a></li>
+                <li class="right_nav"><a href="#">CART</a></li>
+            </ul>
+            
+            <div class="main_content">
+                <h1>ORDER</h1>
+                <h4>Order Form</h4>
+                <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" name="order_form">
+                    <table style="border-spacing: 10px;">
+                        <tr>
+                            <td>First Name:</td>
+                            <td><input type="text" name="fname" autofocus></td>
+                        </tr>
+                        <tr>
+                            <td>Last Name:</td>
+                            <td><input type="text" name="lname"></td>
+                        </tr>
+                        <tr>
+                            <td>Email: </td>
+                            <td><input type="text" name="email"></td>
+                        </tr>
+                        <tr>
+                            <td>Shipping Address: </td>
+                            <td><input type="text" name="address"></td>
+                        </tr>
+                        <tr>
+                            <td>Item: </td>
+                            <td><input type="text" name="item"></td>
+                        </tr>
+                        <tr>
+                            <td>Quantity: </td>
+                            <td><input type="number" name="quantity" size="2" min="1" style="width: 30%;"></td>
+                        </tr>
+                        <tr>
+                            <td>Shipping Method: </td>
+                            <td><select name="ship">
+                                    <option value="flatrate">USPS Flat Rate</option>
+                                    <option value="ground">UPS Ground</option>
+                                    <option value="nextday">UPS Next-Day</option>
+                                </select></td>
+                        </tr>
+                        <tr>
+                            <td>Credit/Debit Card: </td>
+                            <td><input type="text" name="cc_num"></td>
+                        </tr>
+                    </table>
+                    <input type="submit" class="sub_button" value="Submit" name="sub"/>
+                </form>
+                
+                
+            </div>
+            
+            <div class="sidebar_div">
+                <ul>
+                    <li class="side_items_top">BRANDS</li>
+                    <li class="side_items"><a href="#">Benchmade</a></li>
+                    <li class="side_items"><a href="#">Spyderco</a></li>
+                    <li class="side_items"><a href="#">Chris Reeve</a></li>
+                    <li class="side_items"><a href="#">Boker Plus</a></li>
+                    <li class="side_items"><a href="#">Gravelle</a></li>
+                    <li class="side_items"><a href="#">White River</a></li>
+                    <li class="side_items"><a href="#">Zero Tolerance</a></li>
+                    <li class="side_items"><a href="#">Bradford</a></li>
+                </ul>
+            </div>
+        
+            
+        </section>
+    </body>
+</html>
